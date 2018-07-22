@@ -5,6 +5,9 @@ class UserService extends Service {
     const user = await this.ctx.db.query('select * from user where uid = ?', uid);
     return user;
   }
+  async add(userData) {
+    const result = await this.ctx.model.User.create(userData);
+  }
 }
 
 module.exports = UserService;

@@ -4,5 +4,6 @@ module.exports = {
   host: 'localhost',
   port: '3306',
   username: 'root',
-  password: 'ks123',
+  password: 'rsgame123',
+  underscored: true,
 };

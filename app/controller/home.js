@@ -7,7 +7,11 @@ class HomeController extends Controller {
     const users = await this.ctx.model.User.findAll();
     this.ctx.body = users;
   }
-  async user() {}
+  async user() {
+    const result = await this.ctx.service.user.add();
+    this.ctx.body = result;
+
+  }
 }
 
 module.exports = HomeController;
