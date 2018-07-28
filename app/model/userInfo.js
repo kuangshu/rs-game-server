@@ -10,15 +10,13 @@ module.exports = app => {
       score: { type: STRING(30), allowNull: false, defaultValue: '0' },
       keepLoginDay: { type: STRING(5), allowNull: false, defaultValue: '0' },
       mession: { type: STRING(5), allowNull: false, defaultValue: '1' },
+      user_id: { type: STRING(30), allowNull: false },
     },
     {
       timestamps: true,
+      freezeTableName: true,
     }
   );
-
-  UserInfo.associate = function() {
-    app.model.UserInfo.belongsTo(app.model.User, { as: 'user' });
-  };
 
   // UserInfo.sync({ alter: true });
 

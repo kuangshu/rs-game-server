@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = app => {
-  const { STRING, INTEGER, DATE, BOOLEAN } = app.Sequelize;
+  const { STRING, BOOLEAN } = app.Sequelize;
 
   const QuestionOptions = app.model.define(
     'question_options',
@@ -14,15 +14,17 @@ module.exports = app => {
         comment: '选项类型： 1、文本 2、图片 ',
       },
       isCorrect: { type: BOOLEAN, allowNull: false, comment: '是否是正确答案' },
+      isDelete: { type: BOOLEAN, allowNull: false, defaultValue: false },
     },
     {
       timestamps: true,
+      freezeTableName: true,
     }
   );
 
-  QuestionOptions.associate = function() {
-    app.model.QuestionOptions.belongsTo(app.model.Question, { as: 'Question' });
-  };
+  // QuestionOptions.associate = function() {
+  //   app.model.QuestionOptions.belongsTo(app.model.Question, { as: 'Question' });
+  // };
 
   QuestionOptions.add = async function(entity) {
     return await this.create(entity);

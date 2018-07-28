@@ -17,12 +17,13 @@ module.exports = app => {
     },
     {
       timestamps: true,
+      freezeTableName: true,
     }
   );
 
-  User.associate = function() {
-    app.model.User.hasOne(app.model.UserInfo);
-  };
+  // User.associate = function() {
+  //   app.model.User.hasOne(app.model.UserInfo);
+  // };
 
   User.findByOpenId = async function(openId) {
     return await this.findOne({
